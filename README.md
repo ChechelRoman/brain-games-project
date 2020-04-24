@@ -8,3 +8,10 @@ This package contains 5 console games.
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/a5e9c3b878c805502906/maintainability)](https://codeclimate.com/github/ChechelRoman/brain-games-project/maintainability)
 [![Node.js CI](https://github.com/ChechelRoman/brain-games-project/workflows/Node.js%20CI/badge.svg)](https://github.com/ChechelRoman/brain-games-project/actions)
+
+## Setup
+
+
+## brain-even game showcase
+
+[![asciicast](https://asciinema.org/a/323656.svg)](https://asciinema.org/a/323656)
