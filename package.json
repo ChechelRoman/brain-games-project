@@ -1,6 +1,6 @@
 {
   "name": "brain-games-project",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/ChechelRoman/brain-games-project/issues"
   },
-  "homepage": "https://github.com/ChechelRoman/brain-games-project#readme"
+  "homepage": "https://github.com/ChechelRoman/brain-games-project#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
