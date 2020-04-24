@@ -13,5 +13,5 @@ link:
 unlink:
 	npm unlink
 
-make lint:
+lint:
 	npx eslint .
