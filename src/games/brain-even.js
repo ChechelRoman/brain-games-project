@@ -6,6 +6,7 @@ import {
   maxNumberofRounds,
   printRules,
   printWhenIncorrectAnswer,
+  printWhenCorrectAnswer,
 } from '../index.js';
 
 const isEven = (num) => (num % 2 === 0);
@@ -26,7 +27,7 @@ const playBrainEvenGame = () => {
       return;
     }
 
-    console.log('Correct!');
+    printWhenCorrectAnswer();
     correctAnswers += 1;
   }
 

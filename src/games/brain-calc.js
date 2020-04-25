@@ -6,6 +6,7 @@ import {
   maxNumberofRounds,
   printRules,
   printWhenIncorrectAnswer,
+  printWhenCorrectAnswer,
 } from '../index.js';
 
 const sum = (num1, num2) => num1 + num2;
@@ -43,14 +44,14 @@ const playBrainCalcGame = () => {
 
   while (correctAnswers < maxNumberofRounds) {
     const correctAnswer = getRandomOperation(sum, sub, mult);
-    const answer = (getUserAnswer());
+    const answer = getUserAnswer();
 
     if (answer !== correctAnswer) {
       printWhenIncorrectAnswer(answer, correctAnswer, userName);
       return;
     }
 
-    console.log('Correct!');
+    printWhenCorrectAnswer();
     correctAnswers += 1;
   }
 
