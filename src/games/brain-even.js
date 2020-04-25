@@ -4,23 +4,28 @@ import {
   printWhenGameIsFinished,
   getRandomNumber,
   maxNumberofRounds,
-  printRules,
+  printDesctiption,
+  printQuestion,
   printWhenIncorrectAnswer,
   printWhenCorrectAnswer,
 } from '../index.js';
 
 const isEven = (num) => (num % 2 === 0);
 
+const getCorrectAnswer = () => {
+  const number = getRandomNumber(1, 50);
+  printQuestion(`${number}`);
+  return isEven(number) ? 'yes' : 'no';
+};
+
 const playBrainEvenGame = () => {
   const userName = greetUser();
-  printRules('Answer "yes" if the number is even, otherwise answer "no".');
+  printDesctiption('Answer "yes" if the number is even, otherwise answer "no".');
   let correctAnswers = 0;
 
   while (correctAnswers < maxNumberofRounds) {
-    const number = getRandomNumber(1, 30);
-    console.log(`Question: ${number}`);
+    const correctAnswer = getCorrectAnswer();
     const answer = getUserAnswer();
-    const correctAnswer = isEven(number) ? 'yes' : 'no';
 
     if (answer !== correctAnswer) {
       printWhenIncorrectAnswer(answer, correctAnswer, userName);

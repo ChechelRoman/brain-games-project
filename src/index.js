@@ -11,7 +11,9 @@ const greetUser = () => {
   return userName;
 };
 
-const printRules = (str) => console.log(str);
+const printDesctiption = (description) => console.log(description);
+
+const printQuestion = (question) => console.log(`Question: ${question}`);
 
 const printWhenIncorrectAnswer = (answer, correctAnswer, user) => {
   console.log(`"${answer}" is the wrong answer ;(. The correct answer was "${correctAnswer}".`);
@@ -32,7 +34,8 @@ export {
   printWhenGameIsFinished,
   getRandomNumber,
   maxNumberofRounds,
-  printRules,
+  printDesctiption,
+  printQuestion,
   printWhenIncorrectAnswer,
   printWhenCorrectAnswer,
 };

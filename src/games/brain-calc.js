@@ -4,7 +4,8 @@ import {
   printWhenGameIsFinished,
   getRandomNumber,
   maxNumberofRounds,
-  printRules,
+  printDesctiption,
+  printQuestion,
   printWhenIncorrectAnswer,
   printWhenCorrectAnswer,
 } from '../index.js';
@@ -22,13 +23,13 @@ const getRandomOperation = (operSum, operSub, operMult) => {
 
   switch (idxOfRandomOperation) {
     case 0:
-      console.log(`Question: ${number1} + ${number2}`);
+      printQuestion(`${number1} + ${number2}`);
       break;
     case 1:
-      console.log(`Question: ${number1} - ${number2}`);
+      printQuestion(`${number1} - ${number2}`);
       break;
     case 2:
-      console.log(`Question: ${number1} * ${number2}`);
+      printQuestion(`${number1} * ${number2}`);
       break;
     default:
       break;
@@ -39,7 +40,7 @@ const getRandomOperation = (operSum, operSub, operMult) => {
 
 const playBrainCalcGame = () => {
   const userName = greetUser();
-  printRules('What is the result of the expression?');
+  printDesctiption('What is the result of the expression?');
   let correctAnswers = 0;
 
   while (correctAnswers < maxNumberofRounds) {
