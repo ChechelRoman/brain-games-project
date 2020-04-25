@@ -15,3 +15,7 @@ This package contains 5 console games.
 ## brain-even game showcase
 
 [![asciicast](https://asciinema.org/a/323656.svg)](https://asciinema.org/a/323656)
+
+## brain-calc game showcase
+
+[![asciicast](https://asciinema.org/a/323743.svg)](https://asciinema.org/a/323743)
