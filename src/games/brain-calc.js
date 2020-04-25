@@ -6,7 +6,7 @@ import {
   maxNumberofRounds,
   printRules,
   printWhenIncorrectAnswer,
-} from '../src/index.js';
+} from '../index.js';
 
 const sum = (num1, num2) => num1 + num2;
 const mult = (num1, num2) => num1 * num2;

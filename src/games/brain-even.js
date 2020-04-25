@@ -6,7 +6,7 @@ import {
   maxNumberofRounds,
   printRules,
   printWhenIncorrectAnswer,
-} from '../src/index.js';
+} from '../index.js';
 
 const isEven = (num) => (num % 2 === 0);
 
