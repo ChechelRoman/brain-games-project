@@ -1,14 +1,4 @@
-import {
-  getUserAnswer,
-  greetUser,
-  printWhenGameIsFinished,
-  getRandomNumber,
-  maxNumberofRounds,
-  printDesctiption,
-  printQuestion,
-  printWhenIncorrectAnswer,
-  printWhenCorrectAnswer,
-} from '../index.js';
+import getRandomNumber from '../index.js';
 
 const minNubmer = -100;
 const maxNumber = 1000;
@@ -27,37 +17,22 @@ const isPrime = (num) => {
   return true;
 };
 
+const description = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
 const makeGameData = () => [getRandomNumber(minNubmer, maxNumber)];
 
 const makeQuestion = (data) => {
   const question = data.join(' ');
-  return printQuestion(`${question}`);
+  return question;
 };
 
 const getCorrectAnswer = (data) => (isPrime(data.join(' ')) ? 'yes' : 'no');
 
-const playBrainPrimeGame = () => {
-  const userName = greetUser();
-  printDesctiption('Answer "yes" if given number is prime. Otherwise answer "no"');
-  let correctAnswers = 0;
-  let data = makeGameData();
-
-  while (correctAnswers < maxNumberofRounds) {
-    makeQuestion(data);
-    const correctAnswer = getCorrectAnswer(data);
-    const answer = getUserAnswer();
-
-    if (answer !== correctAnswer) {
-      printWhenIncorrectAnswer(answer, correctAnswer, userName);
-      return;
-    }
-
-    printWhenCorrectAnswer();
-    correctAnswers += 1;
-    data = makeGameData();
-  }
-
-  printWhenGameIsFinished(userName);
+const brainPrime = {
+  description,
+  makeGameData,
+  makeQuestion,
+  getCorrectAnswer,
 };
 
-export default playBrainPrimeGame;
+export default brainPrime;

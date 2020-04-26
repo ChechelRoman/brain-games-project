@@ -1,20 +1,12 @@
-import {
-  getUserAnswer,
-  greetUser,
-  printWhenGameIsFinished,
-  getRandomNumber,
-  maxNumberofRounds,
-  printDesctiption,
-  printQuestion,
-  printWhenIncorrectAnswer,
-  printWhenCorrectAnswer,
-} from '../index.js';
+import getRandomNumber from '../index.js';
 
 const minNubmer = 1;
 const maxNumber = 100;
 const maxStepNumber = 10;
 const progressionLength = 10;
 const hidden = '..';
+
+const description = 'What number is missing in the progression?';
 
 const makeGameData = () => {
   const progression = [];
@@ -35,14 +27,14 @@ const makeGameData = () => {
   return progression;
 };
 
-const makeQuestion = (progression) => {
-  const question = progression.join(' ');
-  return printQuestion(`${question}`);
+const makeQuestion = (data) => {
+  const question = data.join(' ');
+  return question;
 };
 
-const getCorrectAnswer = (progression) => {
-  const idxOfHiddenNumber = progression.findIndex((num) => num === hidden);
-  const newProgression = [...progression].map((num) => Number(num));
+const getCorrectAnswer = (data) => {
+  const idxOfHiddenNumber = data.findIndex((num) => num === hidden);
+  const newProgression = [...data].map((num) => Number(num));
   let step;
 
   switch (idxOfHiddenNumber) {
@@ -58,30 +50,11 @@ const getCorrectAnswer = (progression) => {
   }
 };
 
-const playBrainProgressionGame = () => {
-  const userName = greetUser();
-  printDesctiption('What number is missing in the progression?');
-  let correctAnswers = 0;
-  let data = makeGameData();
-
-  while (correctAnswers < maxNumberofRounds) {
-    makeQuestion(data);
-    const correctAnswer = getCorrectAnswer(data);
-    const answer = getUserAnswer();
-
-    if (answer !== correctAnswer) {
-      printWhenIncorrectAnswer(answer, correctAnswer, userName);
-      return;
-    }
-
-    printWhenCorrectAnswer();
-    correctAnswers += 1;
-    data = makeGameData();
-  }
-
-  printWhenGameIsFinished(userName);
+const brainProgression = {
+  description,
+  makeGameData,
+  makeQuestion,
+  getCorrectAnswer,
 };
 
-playBrainProgressionGame();
-
-export default playBrainProgressionGame;
+export default brainProgression;

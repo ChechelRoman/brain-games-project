@@ -1,19 +1,24 @@
-import {
-  getUserAnswer,
-  greetUser,
-  printWhenGameIsFinished,
-  getRandomNumber,
-  maxNumberofRounds,
-  printDesctiption,
-  printQuestion,
-  printWhenIncorrectAnswer,
-  printWhenCorrectAnswer,
-} from '../index.js';
+import getRandomNumber from '../index.js';
 
-const getGcd = () => {
-  let x = getRandomNumber(1, 100);
-  let y = getRandomNumber(1, 100);
-  printQuestion(`${x} ${y}`);
+const minNumber = 1;
+const maxNumber = 200;
+
+const description = 'Find the greatest common divisor of given numbers.';
+
+const makeGameData = () => {
+  const number1 = getRandomNumber(minNumber, maxNumber);
+  const number2 = getRandomNumber(minNumber, maxNumber);
+  return [number1, number2];
+};
+
+const makeQuestion = (data) => {
+  const question = `${data[0]} ${data[1]}`;
+  return question;
+};
+
+const getCorrectAnswer = (data) => {
+  let x = data[0];
+  let y = data[1];
 
   while (y !== 0) {
     y = x % (x = y);
@@ -22,25 +27,11 @@ const getGcd = () => {
   return x.toString();
 };
 
-const playBrainGcdGame = () => {
-  const userName = greetUser();
-  printDesctiption('Find the greatest common divisor of given numbers.');
-  let correctAnswers = 0;
-
-  while (correctAnswers < maxNumberofRounds) {
-    const correctAnswer = getGcd();
-    const answer = getUserAnswer();
-
-    if (answer !== correctAnswer) {
-      printWhenIncorrectAnswer(answer, correctAnswer, userName);
-      return;
-    }
-
-    printWhenCorrectAnswer();
-    correctAnswers += 1;
-  }
-
-  printWhenGameIsFinished(userName);
+const brainGcd = {
+  description,
+  makeGameData,
+  makeQuestion,
+  getCorrectAnswer,
 };
 
-export default playBrainGcdGame;
+export default brainGcd;

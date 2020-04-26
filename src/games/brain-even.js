@@ -1,42 +1,26 @@
-import {
-  getUserAnswer,
-  greetUser,
-  printWhenGameIsFinished,
-  getRandomNumber,
-  maxNumberofRounds,
-  printDesctiption,
-  printQuestion,
-  printWhenIncorrectAnswer,
-  printWhenCorrectAnswer,
-} from '../index.js';
+import getRandomNumber from '../index.js';
+
+const minNumber = 1;
+const maxNumber = 200;
 
 const isEven = (num) => (num % 2 === 0);
 
-const getCorrectAnswer = () => {
-  const number = getRandomNumber(1, 50);
-  printQuestion(`${number}`);
-  return isEven(number) ? 'yes' : 'no';
+const description = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+const makeGameData = () => [getRandomNumber(minNumber, maxNumber)];
+
+const makeQuestion = (data) => {
+  const question = data.join(' ');
+  return question;
 };
 
-const playBrainEvenGame = () => {
-  const userName = greetUser();
-  printDesctiption('Answer "yes" if the number is even, otherwise answer "no".');
-  let correctAnswers = 0;
+const getCorrectAnswer = (data) => (isEven(data.join(' ')) ? 'yes' : 'no');
 
-  while (correctAnswers < maxNumberofRounds) {
-    const correctAnswer = getCorrectAnswer();
-    const answer = getUserAnswer();
-
-    if (answer !== correctAnswer) {
-      printWhenIncorrectAnswer(answer, correctAnswer, userName);
-      return;
-    }
-
-    printWhenCorrectAnswer();
-    correctAnswers += 1;
-  }
-
-  printWhenGameIsFinished(userName);
+const brainEven = {
+  description,
+  makeGameData,
+  makeQuestion,
+  getCorrectAnswer,
 };
 
-export default playBrainEvenGame;
+export default brainEven;
