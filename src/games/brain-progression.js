@@ -17,7 +17,7 @@ const makeGameData = () => {
   let step = startNumber;
 
   while (i < progressionLength) {
-    progression.push((step + progressionStep).toString());
+    progression.push(step + progressionStep);
     step += progressionStep;
     i += 1;
   }
@@ -34,27 +34,26 @@ const makeQuestion = (data) => {
 
 const getCorrectAnswer = (data) => {
   const idxOfHiddenNumber = data.findIndex((num) => num === hidden);
-  const newProgression = [...data].map((num) => Number(num));
   let step;
 
   switch (idxOfHiddenNumber) {
     case 0:
-      step = newProgression[2] - newProgression[1];
-      return (newProgression[1] - step).toString();
+      step = data[2] - data[1];
+      return (data[1] - step).toString();
     case progressionLength - 1:
-      step = newProgression[2] - newProgression[1];
-      return (newProgression[progressionLength - 2] + step).toString();
+      step = data[2] - data[1];
+      return (data[progressionLength - 2] + step).toString();
     default:
-      step = (newProgression[idxOfHiddenNumber + 1] - newProgression[idxOfHiddenNumber - 1]) / 2;
-      return (newProgression[idxOfHiddenNumber - 1] + step).toString();
+      step = (data[idxOfHiddenNumber + 1] - data[idxOfHiddenNumber - 1]) / 2;
+      return (data[idxOfHiddenNumber - 1] + step).toString();
   }
 };
 
-const brainProgression = {
+const brainProgressionCopmonents = {
   description,
   makeGameData,
   makeQuestion,
   getCorrectAnswer,
 };
 
-export default brainProgression;
+export default brainProgressionCopmonents;

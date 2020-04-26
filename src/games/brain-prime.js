@@ -28,11 +28,11 @@ const makeQuestion = (data) => {
 
 const getCorrectAnswer = (data) => (isPrime(data.join(' ')) ? 'yes' : 'no');
 
-const brainPrime = {
+const brainPrimeCopmonents = {
   description,
   makeGameData,
   makeQuestion,
   getCorrectAnswer,
 };
 
-export default brainPrime;
+export default brainPrimeCopmonents;

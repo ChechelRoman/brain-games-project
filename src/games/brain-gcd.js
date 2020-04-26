@@ -27,11 +27,11 @@ const getCorrectAnswer = (data) => {
   return x.toString();
 };
 
-const brainGcd = {
+const brainGcdCopmonents = {
   description,
   makeGameData,
   makeQuestion,
   getCorrectAnswer,
 };
 
-export default brainGcd;
+export default brainGcdCopmonents;

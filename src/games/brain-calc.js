@@ -49,11 +49,11 @@ const getCorrectAnswer = (data) => {
   return operation(data[0], data[1]).toString();
 };
 
-const brainCalc = {
+const brainCalcCopmonents = {
   description,
   makeGameData,
   makeQuestion,
   getCorrectAnswer,
 };
 
-export default brainCalc;
+export default brainCalcCopmonents;

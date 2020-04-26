@@ -2,16 +2,16 @@ import readlineSync from 'readline-sync';
 // All imported files have the same pattern:
 // description, makeGameData, makeQuestion, getCorrectAnswer
 // following the calls of the makeGame function;
-import brainEven from '../games/brain-even.js';
-import brainPrime from '../games/brain-prime.js';
-import brainCalc from '../games/brain-calc.js';
-import braindGcd from '../games/brain-gcd.js';
-import brainProgression from '../games/brain-progression.js';
+import brainEvenCopmonents from '../games/brain-even.js';
+import brainPrimeCopmonents from '../games/brain-prime.js';
+import brainCalcCopmonents from '../games/brain-calc.js';
+import braindGcdCopmonents from '../games/brain-gcd.js';
+import brainProgressionCopmonents from '../games/brain-progression.js';
 
+
+const maxNumberofRounds = 3;
 
 const getUserName = () => readlineSync.question('May I have your name? ');
-
-const getUserAnswer = () => readlineSync.question('Your answer ');
 
 const greetUser = () => {
   console.log('Welcome to the Brain Games!');
@@ -20,9 +20,13 @@ const greetUser = () => {
   return userName;
 };
 
-const printDesctiption = (gameDescription) => console.log(gameDescription);
+const printDescription = (gameDescription) => console.log(gameDescription);
 
 const printQuestion = (question) => console.log(`Question: ${question}`);
+
+const getUserAnswer = () => readlineSync.question('Your answer ');
+
+const printWhenCorrectAnswer = () => console.log('Correct!');
 
 const printWhenIncorrectAnswer = (answer, correctAnswer, user) => {
   console.log(`"${answer}" is the wrong answer ;(. The correct answer was "${correctAnswer}".`);
@@ -31,22 +35,18 @@ const printWhenIncorrectAnswer = (answer, correctAnswer, user) => {
 
 const printWhenGameIsFinished = (name) => console.log(`Congratulations, ${name}!`);
 
-const printWhenCorrectAnswer = () => console.log('Correct!');
-
-const maxNumberofRounds = 3;
-
 const chooseGame = (gameName) => {
   switch (gameName) {
     case 'brain-even':
-      return brainEven;
+      return brainEvenCopmonents;
     case 'brain-calc':
-      return brainCalc;
+      return brainCalcCopmonents;
     case 'brain-gcd':
-      return braindGcd;
+      return braindGcdCopmonents;
     case 'brain-progression':
-      return brainProgression;
+      return brainProgressionCopmonents;
     case 'brain-prime':
-      return brainPrime;
+      return brainPrimeCopmonents;
     default:
       throw new Error(`Game "${gameName}" does not exist.`);
   }
@@ -55,7 +55,7 @@ const chooseGame = (gameName) => {
 const makeGame = (name) => {
   const game = chooseGame(name);
   const userName = greetUser();
-  printDesctiption(game.description);
+  printDescription(game.description);
   let correctAnswers = 0;
   let data = game.makeGameData();
 

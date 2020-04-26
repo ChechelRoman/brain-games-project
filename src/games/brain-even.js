@@ -16,11 +16,11 @@ const makeQuestion = (data) => {
 
 const getCorrectAnswer = (data) => (isEven(data.join(' ')) ? 'yes' : 'no');
 
-const brainEven = {
+const brainEvenCopmonents = {
   description,
   makeGameData,
   makeQuestion,
   getCorrectAnswer,
 };
 
-export default brainEven;
+export default brainEvenCopmonents;
