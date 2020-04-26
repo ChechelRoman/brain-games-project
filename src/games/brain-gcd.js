@@ -11,22 +11,15 @@ import {
 } from '../index.js';
 
 const getGcd = () => {
-  const numbers = [getRandomNumber(1, 100), getRandomNumber(1, 100)];
-  const divisors = numbers
-    .reduce((acc, number) => {
-      for (let i = 1; i <= number; i += 1) {
-        if (number % i === 0) {
-          acc.push(i);
-        }
-      }
-      return acc;
-    }, [])
-    .filter((num, idx, arr) => arr.indexOf(num) === idx
-      && arr.lastIndexOf(num) !== idx)
-    .sort((a, b) => a - b);
+  let x = getRandomNumber(1, 100);
+  let y = getRandomNumber(1, 100);
+  printQuestion(`${x} ${y}`);
 
-  printQuestion(`${numbers[0]} ${numbers[1]}`);
-  return divisors[divisors.length - 1].toString();
+  while (y !== 0) {
+    y = x % (x = y);
+  }
+
+  return x.toString();
 };
 
 const playBrainGcdGame = () => {
