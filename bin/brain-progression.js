@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import makeGame from '../src/game-engine/game-engine.js';
+import { makeBrainProgressionGame } from '../src/game-engine/game-engine.js';
 
-makeGame('brain-progression');
+makeBrainProgressionGame();

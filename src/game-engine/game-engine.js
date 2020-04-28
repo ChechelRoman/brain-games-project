@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 // All imported files have the same pattern:
-// description, makeGameData, makeQuestion, getCorrectAnswer
+// description, makeGameData, makeQuestion, getCorrectAnswer,
 // following the calls of the makeGame function;
 import brainEvenCopmonents from '../games/brain-even.js';
 import brainPrimeCopmonents from '../games/brain-prime.js';
@@ -8,32 +8,7 @@ import brainCalcCopmonents from '../games/brain-calc.js';
 import braindGcdCopmonents from '../games/brain-gcd.js';
 import brainProgressionCopmonents from '../games/brain-progression.js';
 
-
 const maxNumberofRounds = 3;
-
-const getUserName = () => readlineSync.question('May I have your name? ');
-
-const greetUser = () => {
-  console.log('Welcome to the Brain Games!');
-  const userName = getUserName();
-  console.log(`Hello, ${userName}!`);
-  return userName;
-};
-
-const printDescription = (gameDescription) => console.log(gameDescription);
-
-const printQuestion = (question) => console.log(`Question: ${question}`);
-
-const getUserAnswer = () => readlineSync.question('Your answer ');
-
-const printWhenCorrectAnswer = () => console.log('Correct!');
-
-const printWhenIncorrectAnswer = (answer, correctAnswer, user) => {
-  console.log(`"${answer}" is the wrong answer ;(. The correct answer was "${correctAnswer}".`);
-  console.log(`Let's try again, ${user}!`);
-};
-
-const printWhenGameIsFinished = (name) => console.log(`Congratulations, ${name}!`);
 
 const chooseGame = (gameName) => {
   switch (gameName) {
@@ -54,27 +29,42 @@ const chooseGame = (gameName) => {
 
 const makeGame = (name) => {
   const game = chooseGame(name);
-  const userName = greetUser();
-  printDescription(game.description);
+  console.log('Welcome to the Brain Games!');
+  const userName = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${userName}!`);
+  console.log(game.description);
   let correctAnswers = 0;
   let data = game.makeGameData();
 
   while (correctAnswers < maxNumberofRounds) {
-    printQuestion(game.makeQuestion(data));
+    console.log(`Question: ${game.makeQuestion(data)}`);
     const correctAnswer = game.getCorrectAnswer(data);
-    const answer = getUserAnswer();
+    const answer = readlineSync.question('Your answer ');
 
     if (answer !== correctAnswer) {
-      printWhenIncorrectAnswer(answer, correctAnswer, userName);
+      console.log(`"${answer}" is the wrong answer ;(. The correct answer was "${correctAnswer}".`);
+      console.log(`Let's try again, ${userName}!`);
       return;
     }
 
-    printWhenCorrectAnswer();
+    console.log('Correct!');
     correctAnswers += 1;
     data = game.makeGameData();
   }
 
-  printWhenGameIsFinished(userName);
+  console.log(`Congratulations, ${userName}!`);
 };
 
-export default makeGame;
+const makeBrainEvenGame = () => makeGame('brain-even');
+const makeBrainCalcGame = () => makeGame('brain-calc');
+const makeBrainGcdGame = () => makeGame('brain-gcd');
+const makeBrainProgressionGame = () => makeGame('brain-progression');
+const makeBrainPrimeGame = () => makeGame('brain-prime');
+
+export {
+  makeBrainEvenGame,
+  makeBrainCalcGame,
+  makeBrainGcdGame,
+  makeBrainProgressionGame,
+  makeBrainPrimeGame,
+};
